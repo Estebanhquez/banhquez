@@ -1,0 +1,72 @@
+:root {
+  /* Paleta de colores EXACTA del diseño */
+  --color-dark: #1c151c;
+  --color-accent: #ff474a;
+  --color-grey: #777377;
+  --color-light: #f9f2f9;
+
+  /* Sistema Tipográfico */
+  --font-display: 'Epilogue', sans-serif;
+  --font-mono: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  /* Corregido para utilizar la variable existente */
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* CRÍTICO: Previene el scroll horizontal global */
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+/* Ocultar scrollbar para un look más limpio */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-grey);
+}
+
+/* Estilos de Accesibilidad (a11y) */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-light);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Utilidades Responsivas Globales */
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}

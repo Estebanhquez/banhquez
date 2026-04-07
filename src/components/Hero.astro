@@ -1,0 +1,685 @@
+---
+import VideoReel from "./VideoReel.tsx";
+import bgImage from "../assets/images/26c.jpg";
+
+const localVideoPath = "/video/Reel2026_3.mp4";
+---
+
+<div id="introModal" class="intro-modal">
+    <button id="closeModalBtn" class="close-modal-btn">CLOSE [ X ]</button>
+    <div class="modal-video-container">
+        <video
+            id="modalVideoPlayer"
+            src={localVideoPath}
+            muted
+            playsinline
+            preload="none"
+            controls
+            style="width: 100%; height: 100%; object-fit: cover;"></video>
+    </div>
+</div>
+
+<header class="top-nav">
+    <div class="logo">BAN<span class="text-accent">HQUEZ</span></div>
+    <nav aria-label="Navegación principal" class="desktop-only">
+        <ul>
+            <li><a href="#landing" class="active">WORK</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <div class="hamburger-menu" id="hamburgerBtn" aria-label="Abrir menú">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</header>
+
+<div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="menu-inner-container">
+        <header class="menu-header">
+            <div class="logo">BAN<span class="text-accent">HQUEZ</span></div>
+            <button
+                id="closeMenuBtn"
+                class="close-menu-btn"
+                aria-label="Cerrar menú"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    width="36"
+                    height="36"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    fill="none"><path d="M18 6L6 18M6 6l12 12"></path></svg
+                >
+            </button>
+        </header>
+
+        <div class="menu-body">
+            <div class="menu-author">
+                <span class="text-light">ESTEBAN HENRÍQUEZ</span><br />
+                <span class="text-accent">HEAD OF MOTION & SYSTEMS</span>
+            </div>
+
+            <nav class="mobile-nav-links">
+                <a href="#landing" class="mobile-link active">
+                    <span class="nav-title">WORK</span>
+                    <span class="nav-sub">/ DEMO REEL '26</span>
+                </a>
+                <a href="#about" class="mobile-link">
+                    <span class="nav-title">ABOUT</span>
+                    <span class="nav-sub">/ CORE PHILOSOPHY</span>
+                </a>
+                <a href="#contact" class="mobile-link">
+                    <span class="nav-title">CONTACT</span>
+                    <span class="nav-sub">/ LET'S TALK</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="menu-footer">
+            <div class="menu-socials">
+                <a href="#">LINKEDIN</a>
+                <a href="#">X</a>
+                <a href="#">INSTAGRAM</a>
+            </div>
+            <div class="menu-copyright">
+                © 2026 BANHQUEZ | LETSTALK<span class="text-accent"
+                    >@BANHQUEZ.COM</span
+                >
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="hero-wrapper">
+    <div class="hero-dark-bg">
+        <div class="hero-content" id="landing">
+            <span class="subtitle desktop-only">ESTEBAN HENRÍQUEZ </span>
+
+            <h1 class="main-title desktop-only">
+                <span class="text-light">THE MOTION DESIGNER</span><br />
+                <span class="text-accent">WHO BUILDS THE SYSTEM,</span><br />
+                <span class="text-light">NOT JUST THE SHOT.</span>
+            </h1>
+            <h1 class="main-title mobile-only">
+                <span class="text-light">MOTION DESIGNER</span><br />
+                <span class="text-accent">BUILDING SYSTEMS,</span><br />
+                <span class="text-light">NOT JUST SHOTS.</span>
+            </h1>
+
+            <div class="decorative-symbols">
+                <a href="#landing" class="work-link">/ WORK</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-overlap-container">
+        <div class="video-container">
+            <VideoReel
+                client:visible
+                videoSrc={localVideoPath}
+                coverImageSrc={bgImage.src}
+            />
+        </div>
+
+        <div class="hero-footer">
+            <button class="replay-btn">CLICK TO REPLAY</button>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* MODAL */
+    .intro-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(26, 17, 24, 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+            opacity 0.5s ease,
+            visibility 0.5s ease;
+    }
+
+    .intro-modal.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .close-modal-btn {
+        position: absolute;
+        top: 2rem;
+        right: 2.5rem;
+        background: none;
+        border: none;
+        color: var(--color-light);
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        z-index: 10000;
+        padding: 0.5rem;
+        transition: color 0.3s ease;
+    }
+
+    .close-modal-btn:hover,
+    .close-modal-btn:focus-visible {
+        color: var(--color-accent);
+    }
+
+    .modal-video-container {
+        width: 90%;
+        max-width: 1400px;
+        aspect-ratio: 16 / 9;
+        background: transparent;
+        box-shadow: none;
+    }
+    .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        background-color: rgba(26, 17, 24, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 2000;
+    }
+
+    .logo {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 25px;
+        letter-spacing: -0.02em;
+        color: var(--color-light);
+    }
+
+    .text-accent {
+        color: var(--color-accent);
+    }
+    .text-light {
+        color: var(--color-light);
+    }
+
+    .top-nav ul {
+        display: flex;
+        gap: 3rem;
+        list-style: none;
+        font-family: var(--font-mono);
+        font-size: 16px;
+        letter-spacing: 0.1em;
+    }
+
+    .top-nav a {
+        text-decoration: none;
+        color: #f9f2f9;
+        transition: color 0.2s ease;
+    }
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+        color: var(--color-light);
+    }
+    .top-nav a.active {
+        color: var(--color-accent);
+        font-weight: 700;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #120b10;
+        z-index: 3000;
+        display: flex;
+        justify-content: center;
+        transform: translateY(-100%);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        overflow-y: auto;
+    }
+    .mobile-menu-overlay.active {
+        transform: translateY(0);
+    }
+
+    .mobile-menu-overlay::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            url("../assets/images/pattern.png"),
+            radial-gradient(
+                ellipse 100% 100% at -15% 120%,
+                rgba(100, 15, 15, 0.45) 0%,
+                rgba(70, 10, 10, 0.15) 45%,
+                transparent 72%
+            ),
+            radial-gradient(
+                ellipse 75% 75% at 118% -18%,
+                rgba(90, 15, 15, 0.35) 0%,
+                rgba(60, 10, 10, 0.1) 45%,
+                transparent 70%
+            );
+        background-size: cover, auto, auto;
+        opacity: 0.8;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: overlay;
+    }
+
+    .menu-inner-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: 769px) {
+        .mobile-menu-overlay {
+            display: none !important;
+        }
+    }
+
+    .hero-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: transparent;
+        position: relative;
+    }
+
+    .hero-dark-bg {
+        width: 100vw;
+        box-sizing: border-box;
+        background-color: #1a1118;
+        background-image:
+            radial-gradient(
+                ellipse 55% 45% at 50% 72%,
+                rgba(180, 20, 20, 0.82) 0%,
+                rgba(140, 15, 15, 0.38) 28%,
+                rgba(80, 10, 10, 0.12) 55%,
+                transparent 75%
+            ),
+            radial-gradient(
+                ellipse 80% 35% at 50% 95%,
+                rgba(120, 15, 15, 0.45) 0%,
+                transparent 65%
+            );
+        padding-bottom: 12.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 2rem;
+        padding-top: 10rem;
+    }
+
+    .subtitle {
+        font-family: var(--font-mono);
+        font-size: 20px;
+        color: #ffffff;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+
+    .main-title {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 74px;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        margin-bottom: 3rem;
+    }
+
+    .decorative-symbols {
+        width: 100%;
+        text-align: left;
+        margin-top: 1rem;
+    }
+
+    .work-link {
+        font-family: var(--font-mono);
+        color: var(--color-accent);
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .work-link:hover,
+    .work-link:focus-visible {
+        opacity: 0.8;
+    }
+
+    .video-overlap-container {
+        width: 100%;
+        max-width: 1200px;
+        margin-top: -12rem;
+        position: relative;
+        z-index: 10;
+        padding: 0 2rem;
+    }
+
+    .video-container {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: var(--color-accent);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-footer {
+        display: flex;
+        justify-content: flex-end;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--color-grey);
+        padding-top: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .replay-btn {
+        background: none;
+        border: none;
+        color: var(--color-dark);
+        font-family: inherit;
+        font-size: 16px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: 700;
+        position: relative;
+        z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+        .modal-video-container {
+            width: 100%;
+        }
+        .close-modal-btn {
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .hamburger-menu {
+            display: flex;
+            width: 35px;
+            height: 22px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger-menu .line {
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-accent);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        .close-menu-btn {
+            background: none;
+            border: none;
+            color: var(--color-accent);
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .menu-author {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.25em;
+            line-height: 1.6;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .mobile-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .nav-title {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            color: rgba(255, 255, 255, 0.3);
+            transition:
+                color 0.3s ease,
+                font-style 0.3s ease;
+        }
+
+        .mobile-link.active .nav-title,
+        .mobile-link:active .nav-title {
+            color: var(--color-light);
+            font-style: italic;
+        }
+
+        .nav-sub {
+            font-family: var(--font-mono);
+            color: var(--color-accent);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .menu-footer {
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .menu-socials {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-socials a {
+            font-family: var(--font-mono);
+            color: var(--color-light);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+        }
+
+        .menu-copyright {
+            font-family: var(--font-mono);
+            color: var(--color-light);
+            font-size: 9px;
+            letter-spacing: 0.05em;
+            opacity: 0.7;
+        }
+
+        .hero-dark-bg {
+            padding-bottom: 4rem;
+        }
+
+        .hero-content {
+            align-items: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            padding-top: 8rem;
+        }
+        .subtitle {
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .main-title {
+            font-size: 46px;
+            line-height: 1.05;
+            text-align: center;
+        }
+        .decorative-symbols {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .video-overlap-container {
+            margin-top: 0;
+            padding: 0;
+        }
+        .hero-footer {
+            border-top: none;
+            padding-right: 1.5rem;
+        }
+        .replay-btn {
+            border-bottom: 1px solid var(--color-dark);
+            padding-bottom: 2px;
+        }
+    }
+</style>
+
+<script>
+    const hamburger = document.getElementById("hamburgerBtn");
+    const closeMenuBtn = document.getElementById("closeMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const links = document.querySelectorAll(".mobile-link");
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener("click", () => {
+            mobileMenu.classList.add("active");
+            document.body.style.overflow = "hidden";
+        });
+    }
+
+    if (closeMenuBtn && mobileMenu) {
+        closeMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+    }
+
+    links.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (mobileMenu) {
+                mobileMenu.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+
+            links.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+        });
+    });
+
+    const introModal = document.getElementById("introModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const modalVideo = document.getElementById(
+        "modalVideoPlayer",
+    ) as HTMLVideoElement;
+
+    function closeIntroModal() {
+        if (!introModal) return;
+        introModal.classList.add("hidden");
+        document.body.style.overflow = "";
+
+        if (modalVideo) {
+            modalVideo.pause();
+            modalVideo.removeAttribute("src");
+            modalVideo.load();
+        }
+        sessionStorage.setItem("introSeen", "true");
+    }
+
+    if (introModal && closeModalBtn) {
+        const hasSeenIntro = sessionStorage.getItem("introSeen");
+
+        if (!hasSeenIntro) {
+            document.body.style.overflow = "hidden";
+            closeModalBtn.addEventListener("click", closeIntroModal);
+
+            if (modalVideo) {
+                modalVideo.play().catch((error) => {
+                    console.error("Autoplay preventivo del navegador:", error);
+                });
+                modalVideo.addEventListener("ended", closeIntroModal);
+            }
+        } else {
+            introModal.classList.add("hidden");
+        }
+    }
+
+    const replayBtn = document.querySelector(".replay-btn");
+
+    if (replayBtn) {
+        replayBtn.addEventListener("click", () => {
+            const mainVideo = document.getElementById(
+                "mainVideoPlayer",
+            ) as HTMLVideoElement;
+            const coverPlaceholder = document.getElementById(
+                "videoCoverPlaceholder",
+            );
+
+            if (mainVideo) {
+                mainVideo.currentTime = 0;
+                mainVideo.play();
+            } else if (coverPlaceholder) {
+                coverPlaceholder.click();
+            }
+        });
+    }
+</script>

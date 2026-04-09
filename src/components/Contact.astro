@@ -46,6 +46,13 @@ import helloSvg from "../assets/images/Hello.svg";
 
         <div class="contact-form-wrapper">
             <form class="contact-form" id="contactForm">
+                <input
+                    type="checkbox"
+                    name="botcheck"
+                    class="hidden"
+                    style="display: none;"
+                />
+
                 <div class="form-row">
                     <div class="input-group">
                         <label for="firstName">FIRST NAME</label>
@@ -484,8 +491,10 @@ import helloSvg from "../assets/images/Hello.svg";
 
             const formData = new FormData(form);
 
-            // REEMPLAZA ESTA CADENA POR TU ACCESS KEY DE WEB3FORMS
-            formData.append("access_key", "AQUÍ_VA_TU_ACCESS_KEY");
+            formData.append(
+                "access_key",
+                "5e269a13-2656-4783-8052-3b06914fa80b",
+            );
 
             formData.append(
                 "subject",

@@ -99,8 +99,8 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             <span class="subtitle desktop-only">ESTEBAN HENRÍQUEZ </span>
 
             <h1 class="main-title desktop-only">
-                <span class="text-light">THE MOTION DESIGNER</span><br />
-                <span class="text-accent">WHO BUILDS THE SYSTEM,</span><br />
+                <span class="text-light">MOTION DESIGNER</span><br />
+                <span class="text-accent">BUILDING SYSTEMS,</span><br />
                 <span class="text-light">NOT JUST THE SHOT.</span>
             </h1>
             <h1 class="main-title mobile-only">
@@ -595,10 +595,11 @@ const localVideoPath = "/video/Reel2026_3.mp4";
 </style>
 
 <script>
+    // --- LÓGICA DEL MENÚ MÓVIL ---
     const hamburger = document.getElementById("hamburgerBtn");
     const closeMenuBtn = document.getElementById("closeMenuBtn");
     const mobileMenu = document.getElementById("mobileMenu");
-    const links = document.querySelectorAll(".mobile-link");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
 
     if (hamburger && mobileMenu) {
         hamburger.addEventListener("click", () => {
@@ -614,18 +615,59 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         });
     }
 
-    links.forEach((link) => {
+    // --- LÓGICA DE ACTIVE STATE PARA MENÚ DESKTOP Y MOBILE (SCROLL SPY) ---
+    const desktopLinks = document.querySelectorAll(".top-nav a");
+    const sections = document.querySelectorAll(
+        "section[id], div[id='landing']",
+    ); // Incluimos el landing
+
+    // Función para manejar el Observer
+    const observerOptions = {
+        root: null,
+        rootMargin: "-20% 0px -70% 0px", // Define cuándo una sección se considera "activa"
+        threshold: 0,
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const currentId = entry.target.getAttribute("id");
+
+                // Actualizar Desktop
+                desktopLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${currentId}`) {
+                        link.classList.add("active");
+                    }
+                });
+
+                // Actualizar Mobile
+                mobileLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${currentId}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Observar las secciones
+    sections.forEach((section) => {
+        sectionObserver.observe(section);
+    });
+
+    // Cierre del menú móvil al hacer clic en un enlace (mantiene funcionalidad)
+    mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
             if (mobileMenu) {
                 mobileMenu.classList.remove("active");
                 document.body.style.overflow = "";
             }
-
-            links.forEach((l) => l.classList.remove("active"));
-            link.classList.add("active");
         });
     });
 
+    // --- LÓGICA DEL MODAL ---
     const introModal = document.getElementById("introModal");
     const closeModalBtn = document.getElementById("closeModalBtn");
     const modalVideo = document.getElementById(
@@ -663,6 +705,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         }
     }
 
+    // --- LÓGICA DEL BOTÓN REPLAY ---
     const replayBtn = document.querySelector(".replay-btn");
 
     if (replayBtn) {

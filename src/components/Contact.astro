@@ -166,7 +166,7 @@ import helloSvg from "../assets/images/Hello.svg";
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         opacity: 1;
         pointer-events: none;
-        z-index: 20;
+        z-index: 1; /* CORRECCIÓN: Nivel bajado a 1 para liberar la foto */
         mix-blend-mode: overlay;
     }
 
@@ -193,7 +193,7 @@ import helloSvg from "../assets/images/Hello.svg";
         width: 100%;
         height: 100%;
         overflow: hidden;
-        z-index: 0;
+        z-index: 0; /* CORRECCIÓN: La marca de agua queda detrás del ruido */
         pointer-events: none;
     }
 
@@ -222,7 +222,7 @@ import helloSvg from "../assets/images/Hello.svg";
         gap: 4rem;
         margin-bottom: 8rem;
         position: relative;
-        z-index: 10;
+        z-index: 10; /* CORRECCIÓN: Al ser 10, la foto y textos están por encima del ruido (1) */
     }
 
     .section-meta {
@@ -420,7 +420,7 @@ import helloSvg from "../assets/images/Hello.svg";
         }
 
         .contact-title {
-            font-size: 60px; /* Ajustado según Figma */
+            font-size: 60px;
             margin-bottom: 2rem;
             position: relative;
             z-index: 2;
@@ -442,7 +442,7 @@ import helloSvg from "../assets/images/Hello.svg";
         }
 
         .availability-text {
-            font-size: 16px; /* Ajustado según Figma */
+            font-size: 16px;
             max-width: 60%;
             position: relative;
             z-index: 2;

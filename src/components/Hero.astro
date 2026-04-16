@@ -96,7 +96,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
 <section class="hero-wrapper">
     <div class="hero-dark-bg">
         <div class="hero-content" id="landing">
-            <span class="subtitle desktop-only">ESTEBAN HENRÍQUEZ </span>
+            <span class="subtitle">ESTEBAN HENRÍQUEZ </span>
 
             <h1 class="main-title desktop-only">
                 <span class="text-light">MOTION DESIGNER</span><br />
@@ -374,7 +374,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
     .work-link {
         font-family: var(--font-mono);
         color: var(--color-accent);
-        font-size: 11px;
+        font-size: 14px;
         letter-spacing: 0.3em;
         text-transform: uppercase;
         text-decoration: none;
@@ -427,6 +427,24 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         z-index: 10;
     }
 
+    /* =========================================
+       TABLET (769px a 1024px)
+       ========================================= */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .top-nav ul {
+            font-size: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+        }
+        .main-title {
+            font-size: 58px;
+        }
+    }
+
+    /* =========================================
+       MOBILE (Hasta 768px)
+       ========================================= */
     @media (max-width: 768px) {
         .modal-video-container {
             width: 100%;
@@ -434,6 +452,11 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         .close-modal-btn {
             top: 1rem;
             right: 1rem;
+        }
+
+        .top-nav .logo {
+            font-size: 18px;
+            margin-top: 0.25rem;
         }
 
         .hamburger-menu {
@@ -444,6 +467,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             justify-content: space-between;
             cursor: pointer;
             z-index: 1001;
+            margin-right: 1rem;
         }
         .hamburger-menu .line {
             width: 100%;
@@ -555,7 +579,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         }
 
         .hero-dark-bg {
-            padding-bottom: 4rem;
+            padding-bottom: 1rem;
         }
 
         .hero-content {
@@ -565,13 +589,13 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             padding-top: 8rem;
         }
         .subtitle {
-            font-size: 9px;
+            font-size: 14px;
             letter-spacing: 0.15em;
             margin-bottom: 1rem;
             text-align: center;
         }
         .main-title {
-            font-size: 46px;
+            font-size: 42px;
             line-height: 1.05;
             text-align: center;
         }
@@ -588,6 +612,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             padding-right: 1.5rem;
         }
         .replay-btn {
+            font-size: 14px;
             border-bottom: 1px solid var(--color-dark);
             padding-bottom: 2px;
         }

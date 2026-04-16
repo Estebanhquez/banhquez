@@ -272,7 +272,7 @@ import helloSvg from "../assets/images/Hello.svg";
 
     .availability-text {
         font-family: var(--font-body);
-        font-size: 16px;
+        font-size: 18px;
         line-height: 1.5;
         max-width: 80%;
     }
@@ -296,7 +296,7 @@ import helloSvg from "../assets/images/Hello.svg";
 
     label {
         font-family: var(--font-mono);
-        font-size: 10px;
+        font-size: 14px;
         color: var(--color-accent);
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -334,7 +334,7 @@ import helloSvg from "../assets/images/Hello.svg";
         border: none;
         padding: 1.5rem;
         font-family: var(--font-mono);
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -364,7 +364,7 @@ import helloSvg from "../assets/images/Hello.svg";
         align-items: center;
         padding-top: 2rem;
         font-family: var(--font-mono);
-        font-size: 10px;
+        font-size: 12px;
         color: var(--color-light);
         letter-spacing: 0.05em;
         position: relative;
@@ -378,13 +378,32 @@ import helloSvg from "../assets/images/Hello.svg";
         color: var(--color-light);
         text-decoration: none;
         transition: color 0.2s ease;
+        font-size: 14px;
     }
     .footer-right a:hover,
     .footer-right a:focus-visible {
         color: var(--color-accent);
     }
 
-    /* MEDIA QUERIES MOBILE */
+    /* =========================================
+       TABLET (769px a 1024px)
+       ========================================= */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .contact-title {
+            font-size: 78px;
+        }
+        .availability-text {
+            font-size: 17px;
+        }
+        input,
+        textarea {
+            font-size: 17px;
+        }
+    }
+
+    /* =========================================
+       MEDIA QUERIES MOBILE
+       ========================================= */
     @media (max-width: 768px) {
         .contact-section {
             padding: 4rem 1.5rem 2rem 1.5rem;
@@ -401,7 +420,7 @@ import helloSvg from "../assets/images/Hello.svg";
         }
 
         .contact-title {
-            font-size: 72px;
+            font-size: 60px; /* Ajustado según Figma */
             margin-bottom: 2rem;
             position: relative;
             z-index: 2;
@@ -423,6 +442,7 @@ import helloSvg from "../assets/images/Hello.svg";
         }
 
         .availability-text {
+            font-size: 16px; /* Ajustado según Figma */
             max-width: 60%;
             position: relative;
             z-index: 2;

@@ -52,6 +52,9 @@
 </section>
 
 <style>
+    /* =========================================
+       BASE / DESKTOP
+       ========================================= */
     .about-section {
         color: var(--color-dark);
         padding: 8rem 2rem;
@@ -131,7 +134,7 @@
     .lead-text {
         font-family: var(--font-body);
         font-weight: 500;
-        font-size: 23px;
+        font-size: 20px;
         line-height: 1.4;
         margin-bottom: 2rem;
         color: #1a1a1a;
@@ -154,7 +157,7 @@
     .taxonomy-label {
         font-family: var(--font-mono);
         color: var(--color-accent);
-        font-size: 16px;
+        font-size: 15px;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         font-weight: 600;
@@ -164,7 +167,7 @@
     .taxonomy-list {
         font-family: var(--font-mono);
         color: #424242;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.7;
         font-weight: 500;
         display: flex;
@@ -183,22 +186,58 @@
         transform: translateY(-1px);
     }
 
+    /* =========================================
+       TABLET (769px a 1024px)
+       ========================================= */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .section-meta {
+            font-size: 14px;
+        }
+        .philosophy-title {
+            font-size: 68px;
+        }
+        .lead-text {
+            font-size: 19px;
+        }
+        .body-text {
+            font-size: 17px;
+        }
+        .taxonomy-label {
+            font-size: 14px;
+        }
+        .taxonomy-list {
+            font-size: 14px;
+        }
+    }
+
+    /* =========================================
+       MOBILE (Hasta 768px)
+       ========================================= */
     @media (max-width: 768px) {
         .about-section {
-            padding: 5rem 1.5rem;
+            padding: 2rem 1.5rem;
         }
         .about-container {
             grid-template-columns: 1fr;
             gap: 2rem;
         }
+        .section-meta {
+            font-size: 14px;
+        }
         .philosophy-title {
-            font-size: 54px;
+            font-size: 42px;
         }
         .about-content {
             padding-top: 0;
         }
         .lead-text {
-            font-size: 20px;
+            font-size: 18px;
+        }
+        .body-text {
+            font-size: 16px;
+        }
+        .taxonomy-label {
+            font-size: 14px;
         }
         .taxonomy-list {
             font-size: 14px;

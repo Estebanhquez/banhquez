@@ -195,12 +195,11 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         justify-content: space-between;
         align-items: center;
         padding: 1.5rem 2rem;
-        /* Quitamos el blur y ponemos el mismo color sólido que el fondo */
         background-color: #120b10;
         z-index: 2000;
     }
 
-    /* Inyectamos el ruido para que el nav parezca extensión del fondo */
+    /* Ruido del Nav */
     .top-nav::before {
         content: "";
         position: absolute;
@@ -215,7 +214,6 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         mix-blend-mode: overlay;
     }
 
-    /* Aseguramos que los enlaces queden por encima del ruido */
     .top-nav > * {
         position: relative;
         z-index: 1;
@@ -326,7 +324,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         }
     }
 
-    /* === HERO SECTION (IGUAL A CONTACT) === */
+    /* === HERO SECTION === */
     .hero-wrapper {
         display: flex;
         flex-direction: column;
@@ -339,7 +337,6 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         width: 100vw;
         box-sizing: border-box;
         background-color: #120b10;
-        /* Resplandores en las esquinas */
         background-image:
             radial-gradient(
                 ellipse 100% 100% at -15% 120%,
@@ -361,7 +358,6 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         z-index: 2;
     }
 
-    /* Filtro de ruido del fondo del Hero */
     .hero-dark-bg::before {
         content: "";
         position: absolute;
@@ -386,7 +382,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         padding: 0 2rem;
         padding-top: 10rem;
         position: relative;
-        z-index: 30; /* Eleva el contenido por encima del ruido */
+        z-index: 30;
     }
 
     .subtitle {
@@ -760,8 +756,11 @@ const localVideoPath = "/video/Reel2026_3.mp4";
     if (introModal && closeModalBtn) {
         const hasSeenIntro = sessionStorage.getItem("introSeen");
 
+        // === CORRECCIÓN DEL BLOQUEO DE SCROLL ===
         if (!hasSeenIntro) {
-            document.body.style.overflow = "hidden";
+            introModal.classList.remove("hidden"); // Aseguramos que el modal sea visible
+            document.body.style.overflow = "hidden"; // Bloqueamos el scroll
+
             closeModalBtn.addEventListener("click", closeIntroModal);
 
             if (modalVideo) {
@@ -772,6 +771,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             }
         } else {
             introModal.classList.add("hidden");
+            document.body.style.overflow = ""; // Aseguramos que el scroll esté libre
         }
     }
 

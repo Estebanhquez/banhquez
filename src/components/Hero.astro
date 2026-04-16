@@ -454,6 +454,9 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             right: 1rem;
         }
 
+        .top-nav {
+            padding: 1.5rem 3.5rem 1.5rem 2rem;
+        }
         .top-nav .logo {
             font-size: 18px;
             margin-top: 0.25rem;
@@ -467,7 +470,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             justify-content: space-between;
             cursor: pointer;
             z-index: 1001;
-            margin-right: 1rem;
+            margin-right: 0rem;
         }
         .hamburger-menu .line {
             width: 100%;
@@ -586,7 +589,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             align-items: center;
             text-align: center;
             padding: 0 1.5rem;
-            padding-top: 8rem;
+            padding-top: 8.5rem;
         }
         .subtitle {
             font-size: 14px;
@@ -595,7 +598,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             text-align: center;
         }
         .main-title {
-            font-size: 42px;
+            font-size: 35px;
             line-height: 1.05;
             text-align: center;
         }
@@ -616,6 +619,28 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             border-bottom: 1px solid var(--color-dark);
             padding-bottom: 2px;
         }
+    }
+    .noise-bg {
+        background-color: #1c151c;
+        background-image: linear-gradient(
+            to top,
+            #3d0f18 0%,
+            #2a0c14 40%,
+            #1e1120 70%,
+            #1c151c 100%
+        );
+        position: relative;
+        isolation: isolate;
+    }
+
+    .noise-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: 1;
     }
 </style>
 

@@ -1,6 +1,8 @@
 ---
 import VideoReel from "./VideoReel.tsx";
 import bgImage from "../assets/images/26c.jpg";
+// Importamos la imagen SVG
+import replaySymbols from "../assets/images/01_All.svg";
 
 const localVideoPath = "/video/Reel2026_3.mp4";
 ---
@@ -110,7 +112,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             </h1>
 
             <div class="decorative-symbols">
-                <a href="#landing" class="work-link">/ WORK</a>
+                <span class="work-link">/ WORK</span>
             </div>
         </div>
     </div>
@@ -125,7 +127,13 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         </div>
 
         <div class="hero-footer">
-            <button class="replay-btn">CLICK TO REPLAY</button>
+            <button class="replay-btn" aria-label="Replay Video">
+                <img
+                    src={replaySymbols.src}
+                    alt="Replay Symbols"
+                    class="replay-img"
+                />
+            </button>
         </div>
     </div>
 </section>
@@ -194,12 +202,11 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem 2.5rem 1rem 2rem;
+        padding: 1.5rem 2rem;
         background-color: #120b10;
         z-index: 2000;
     }
 
-    /* Ruido del Nav */
     .top-nav::before {
         content: "";
         position: absolute;
@@ -339,10 +346,10 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         background-color: #120b10;
         background-image:
             radial-gradient(
-                ellipse 100% 100% at -15% 120%,
-                rgba(100, 15, 15, 0.45) 0%,
-                rgba(70, 10, 10, 0.15) 45%,
-                transparent 72%
+                ellipse 130% 130% at -10% 100%,
+                rgba(110, 20, 20, 0.5) 0%,
+                rgba(70, 10, 10, 0.2) 45%,
+                transparent 75%
             ),
             radial-gradient(
                 ellipse 75% 75% at 118% -18%,
@@ -350,7 +357,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
                 rgba(60, 10, 10, 0.1) 45%,
                 transparent 70%
             );
-        padding-bottom: 12.5rem;
+        padding-bottom: 28.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -415,19 +422,12 @@ const localVideoPath = "/video/Reel2026_3.mp4";
         font-size: 14px;
         letter-spacing: 0.3em;
         text-transform: uppercase;
-        text-decoration: none;
-        transition: opacity 0.3s ease;
-    }
-
-    .work-link:hover,
-    .work-link:focus-visible {
-        opacity: 0.8;
     }
 
     .video-overlap-container {
         width: 100%;
         max-width: 1200px;
-        margin-top: -12rem;
+        margin-top: -28rem;
         position: relative;
         z-index: 10;
         padding: 0 2rem;
@@ -445,24 +445,31 @@ const localVideoPath = "/video/Reel2026_3.mp4";
     .hero-footer {
         display: flex;
         justify-content: flex-end;
-        font-family: var(--font-mono);
-        font-size: 14px;
-        color: var(--color-grey);
         padding-top: 1rem;
         margin-top: 0.5rem;
     }
 
+    /* Estilos del botón modificados para alojar la imagen */
     .replay-btn {
         background: none;
         border: none;
-        color: var(--color-dark);
-        font-family: inherit;
-        font-size: 16px;
         cursor: pointer;
-        text-transform: uppercase;
-        font-weight: 700;
+        padding: 0;
         position: relative;
         z-index: 10;
+        transition: opacity 0.2s ease;
+    }
+
+    .replay-btn:hover,
+    .replay-btn:focus-visible {
+        opacity: 0.7;
+    }
+
+    /* Clase para controlar el tamaño de los símbolos SVG */
+    .replay-img {
+        height: 14px; /* Ajusta esta altura si los símbolos se ven muy pequeños o grandes */
+        width: auto;
+        display: block;
     }
 
     /* =========================================
@@ -485,7 +492,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
        ========================================= */
     @media (max-width: 768px) {
         .hero-dark-bg {
-            padding-bottom: 1rem;
+            padding-bottom: 12rem;
         }
 
         .modal-video-container {
@@ -645,17 +652,20 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             text-align: left;
         }
         .video-overlap-container {
-            margin-top: 0;
+            margin-top: -11.5rem;
             padding: 0;
         }
         .hero-footer {
             border-top: none;
             padding-right: 1.5rem;
         }
+        /* Borrado el padding y borde inferior que tenía en móvil */
         .replay-btn {
-            font-size: 14px;
-            border-bottom: 1px solid var(--color-dark);
-            padding-bottom: 2px;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .replay-img {
+            height: 10px; /* Un poco más pequeño en móvil si es necesario */
         }
     }
 </style>
@@ -756,10 +766,9 @@ const localVideoPath = "/video/Reel2026_3.mp4";
     if (introModal && closeModalBtn) {
         const hasSeenIntro = sessionStorage.getItem("introSeen");
 
-        // === CORRECCIÓN DEL BLOQUEO DE SCROLL ===
         if (!hasSeenIntro) {
-            introModal.classList.remove("hidden"); // Aseguramos que el modal sea visible
-            document.body.style.overflow = "hidden"; // Bloqueamos el scroll
+            introModal.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
 
             closeModalBtn.addEventListener("click", closeIntroModal);
 
@@ -771,7 +780,7 @@ const localVideoPath = "/video/Reel2026_3.mp4";
             }
         } else {
             introModal.classList.add("hidden");
-            document.body.style.overflow = ""; // Aseguramos que el scroll esté libre
+            document.body.style.overflow = "";
         }
     }
 

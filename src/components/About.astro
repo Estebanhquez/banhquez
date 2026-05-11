@@ -1,4 +1,6 @@
 <section id="about" class="about-section">
+    <div class="about-noise"></div>
+
     <div class="about-container">
         <div class="about-header">
             <div class="section-meta">
@@ -57,13 +59,14 @@
        ========================================= */
     .about-section {
         color: var(--color-dark);
-        padding: 8rem 2rem;
+        padding: 8rem 2rem 10rem;
         display: flex;
         justify-content: center;
         position: relative;
         background-color: transparent;
     }
 
+    /* Fondo base blanco/gris */
     .about-section::before {
         content: "";
         position: absolute;
@@ -72,9 +75,10 @@
         left: 0;
         width: 100%;
         background-color: #f5f5f7;
-        z-index: -2;
+        z-index: -3;
     }
 
+    /* Imagen de fondo escalada a tamaño de diseño */
     .about-section::after {
         content: "";
         position: absolute;
@@ -83,9 +87,25 @@
         left: 0;
         width: 100%;
         background-image: url("../assets/images/pattern.png");
-        background-size: cover;
-        background-position: center top;
+        /* Cambio a un límite en píxeles para evitar el zoom excesivo */
+        background-size: 1300px auto;
+        background-repeat: no-repeat;
+        background-position: center center;
         opacity: 0.6;
+        pointer-events: none;
+        z-index: -2;
+    }
+
+    /* Capa de granulado gris claro */
+    .about-noise {
+        position: absolute;
+        top: -800px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.4;
+        mix-blend-mode: multiply;
         pointer-events: none;
         z-index: -1;
     }
@@ -105,7 +125,7 @@
         font-size: 14px;
         color: var(--color-accent);
         letter-spacing: 0.1em;
-        margin-bottom: 2.5rem;
+        margin-bottom: 1rem;
         display: flex;
         gap: 0.5rem;
     }
@@ -217,6 +237,12 @@
         .about-section {
             padding: 2rem 1.5rem;
         }
+
+        .about-section::after {
+            background-size: cover; /* En móvil se necesita cover para que abarque la altura */
+            background-position: center top;
+        }
+
         .about-container {
             grid-template-columns: 1fr;
             gap: 2rem;

@@ -34,16 +34,23 @@ export default function VideoReel({ videoSrc, coverImageSrc }: VideoReelProps) {
                     onMouseEnter={(e) => (e.currentTarget.style.filter = 'brightness(1.1)')}
                     onMouseLeave={(e) => (e.currentTarget.style.filter = 'brightness(1)')}
                 >
-                    {/* Botón Play */}
+                    {/* Botón Play: Caja blanca con sombra */}
                     <div style={{
-                        width: '80px',
-                        height: '60px',
+                        width: '100px',
+                        height: '100px',
                         backgroundColor: 'var(--color-light)',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                    }}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-accent)">
+                        /* Sombra leve aplicada SOLO a la caja blanca */
+                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
+                        transition: 'transform 0.2s ease',
+                    }}
+                        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                    >
+                        {/* SVG del triángulo limpio, sin sombra */}
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="var(--color-accent)">
                             <path d="M5 3l14 9-14 9V3z" />
                         </svg>
                     </div>
